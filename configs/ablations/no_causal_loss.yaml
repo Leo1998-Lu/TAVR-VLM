@@ -1,0 +1,3 @@
+_base_: ../tavr_vlm_rcga.yaml
+loss:
+  lambda_causal: 0.0

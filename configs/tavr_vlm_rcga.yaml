@@ -1,0 +1,88 @@
+seed: 2026
+device: cuda
+num_workers: 8
+amp: true
+
+run:
+  monitor: val_loss
+  monitor_mode: min
+  epochs: 80
+  save_every: 10
+
+paths:
+  entity_ontology: metadata/tavr_entity_ontology.json
+
+model:
+  vocab_size: null
+  pad_token_id: 0
+  bos_token_id: 1
+  eos_token_id: 2
+  max_report_len: 160
+  risk_classes: 3
+  recommendation_dim: 8
+  tabular_dim: 32
+  hidden_dim: 512
+  ct:
+    in_channels: 1
+    patch_size: [8, 16, 16]
+    embed_dim: 512
+    depth: 4
+    num_heads: 8
+    dropout: 0.1
+  echo:
+    in_channels: 1
+    embed_dim: 256
+    temporal_layers: 2
+    dropout: 0.1
+  tabular:
+    hidden_dims: [128, 256]
+    dropout: 0.1
+  fusion:
+    hidden_dim: 512
+    dropout: 0.1
+  rcga:
+    prototype_dim: 512
+    topk_ratio: 0.20
+    disable_risk_prototypes: false
+    disable_purification: false
+    stop_gradient_global: true
+  decoder:
+    num_layers: 4
+    num_heads: 8
+    ff_dim: 2048
+    dropout: 0.1
+
+loss:
+  lambda_risk: 1.0
+  lambda_lm: 1.0
+  lambda_rec: 0.2
+  lambda_causal: 0.5
+  outside_penalty_alpha: 1.0
+  label_smoothing: 0.0
+
+optimizer:
+  name: adamw
+  lr: 1.0e-4
+  weight_decay: 1.0e-2
+  betas: [0.9, 0.999]
+  grad_clip_norm: 1.0
+
+scheduler:
+  name: cosine
+  warmup_epochs: 5
+  min_lr: 1.0e-6
+
+data:
+  batch_size: 2
+  ct_shape: [1, 128, 256, 256]
+  echo_shape: [16, 1, 224, 224]
+  normalize_ct: true
+  normalize_echo: true
+  risk_label_map:
+    l: 0
+    low: 0
+    m: 1
+    mid: 1
+    medium: 1
+    h: 2
+    high: 2

@@ -1,0 +1,33 @@
+{
+  "entities": [
+    "aortic valve",
+    "leaflet",
+    "calcification",
+    "annulus",
+    "annular",
+    "lvot",
+    "left ventricular outflow tract",
+    "coronary",
+    "coronary obstruction",
+    "paravalvular leak",
+    "pvl",
+    "valve sizing",
+    "post-dilation",
+    "access",
+    "femoral",
+    "iliofemoral",
+    "sinus of valsalva",
+    "ascending aorta",
+    "conduction"
+  ],
+  "recommendation_labels": [
+    "conservative_sizing",
+    "standard_sizing",
+    "large_valve_warning",
+    "pvl_mitigation",
+    "post_dilation_if_residual",
+    "coronary_protection",
+    "access_caution",
+    "heart_team_review"
+  ]
+}

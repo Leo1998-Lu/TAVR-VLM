@@ -1,0 +1,4 @@
+_base_: ../tavr_vlm_rcga.yaml
+model:
+  rcga:
+    disable_risk_prototypes: true
