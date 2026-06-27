@@ -118,3 +118,17 @@ Run them with the same `scripts/train.py` and `scripts/evaluate.py` entry points
 * ROI masks are used only for evaluation unless explicitly enabled in a config.
 * Closed-source model evaluation is intentionally not implemented in code, because it depends on external APIs and non-reproducible model versions. Store those outputs in the same manifest format and evaluate them with `tavr_vlm.metrics` if needed.
 
+## Citation
+
+If you find this code or our paper useful for your research, please consider citing:
+
+```bibtex
+@misc{lu2026tavrvlm,
+      title={TAVR-VLM: Risk-Conditioned Causal Grounding for Hallucination-Resistant Report Generation}, 
+      author={Zhixiang Lu and Xiwei Liu and Sifan Song and Changkai Ji and Anh Nguyen and Jionglong Su and Imran Razzak and Jinfeng Wang},
+      year={2026},
+      eprint={2606.26874},
+      archivePrefix={arXiv},
+      primaryClass={cs.AI},
+      url={[https://arxiv.org/abs/2606.26874](https://arxiv.org/abs/2606.26874)}
+}
